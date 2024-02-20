@@ -1,0 +1,4 @@
+azure-cognitiveservices-speech
+opencv-python
+moviepy
+imutils

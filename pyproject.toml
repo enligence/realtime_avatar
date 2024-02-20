@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "realtime-avatar"
+version = "0.1.0"
+description = "Benchmark real time avatars using driver video and avatar image"
+authors = ["Abhinav Dayal <abhinav.dayal@hotmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+hydra-core = "^1.3.2"
+omegaconf = "^2.3.0"
+pydub = "^0.25.1"
+opencv-python = "^4.9.0.80"
+pytest = "^8.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

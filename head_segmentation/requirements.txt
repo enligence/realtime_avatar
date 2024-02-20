@@ -1,0 +1,16 @@
+albumentations
+gdown
+hydra-core
+loguru
+matplotlib
+numpy
+opencv-python
+pandas
+Pillow
+pytorch-lightning
+seaborn
+segmentation-models-pytorch
+streamlit
+torch
+torchvision
+wandb
