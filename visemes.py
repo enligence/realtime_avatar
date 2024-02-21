@@ -20,8 +20,10 @@ from SemanticGuidedHumanMatting.model.model import HumanMatting, HumanSegment
 
 model = HumanMatting(backbone='resnet50')
 model = torch.nn.DataParallel(model)
-model.load_state_dict(torch.load("./SemanticGuidedHumanMatting/pretrained/SGHM-ResNet50.pth", map_location=torch.device('cpu')))
-model = model.cpu().eval()
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model.load_state_dict(torch.load("./SemanticGuidedHumanMatting/pretrained/SGHM-ResNet50.pth", map_location=torch.device(device)))
+#model = model.cpu().eval()
+model = model.to(device).eval()
 print("Load checkpoint successfully ...")
 
 
