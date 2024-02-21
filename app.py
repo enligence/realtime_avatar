@@ -31,7 +31,7 @@ haarcascade_eye_url="https://raw.githubusercontent.com/opencv/opencv/master/data
 LBFmodel_url = "https://github.com/kurnianggoro/GSOC2017/raw/master/data/lbfmodel.yaml"
 # save facial landmark detection model's name as LBFmodel
 LBFmodel = "lbfmodel.yaml"
-
+modelsdir = os.path.join(os.curdir, "cvmodels")
 # save face detection algorithm's name as haarcascade
 haarcascade = "haarcascade_frontalface_alt2.xml"
 haarcascade_eye = "haarcascade_eye.xml"
@@ -45,14 +45,14 @@ print("Load checkpoint successfully ...")
 
 
 # chech if file is in working directory
-if (haarcascade in os.listdir(os.curdir)):
+if (haarcascade in os.listdir(modelsdir)):
     print("File exists")
 else:
     # download file from url and save locally as haarcascade_frontalface_alt2.xml, < 1MB
     urlreq.urlretrieve(haarcascade_url, haarcascade)
     print("File downloaded")
 
-if (haarcascade_eye in os.listdir(os.curdir)):
+if (haarcascade_eye in os.listdir(modelsdir)):
     print("File exists")
 else:
     # download file from url and save locally as haarcascade_eye.xml, < 1MB
@@ -60,7 +60,7 @@ else:
     print("File downloaded")
 
 # check if file is in working directory
-if (LBFmodel in os.listdir(os.curdir)):
+if (LBFmodel in os.listdir(modelsdir)):
     print("File exists")
 else:
     # download picture from url and save locally as lbfmodel.yaml, < 54MB
@@ -75,8 +75,8 @@ def get_face_bbox(img):
     # convert to grayscale
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     # detect faces in image
-    face_cascade = cv2.CascadeClassifier(haarcascade)
-    eye_cascade = cv2.CascadeClassifier(haarcascade_eye)
+    face_cascade = cv2.CascadeClassifier(os.path.join(modelsdir, haarcascade))
+    eye_cascade = cv2.CascadeClassifier(os.path.join(modelsdir, haarcascade_eye))
     faces = face_cascade.detectMultiScale(gray, 1.1, 4)
     # find biggest face
     max_area = 0
@@ -236,6 +236,18 @@ def extract_head(img, human_rect, face_rect):
     # return the image and mask
     return img_with_alpha, mask
 
+def extract_head2(img):
+    w = img.shape[1]
+    h = img.shape[0]
+    resized_img = cv2.resize(img, (178, 218))
+    head_mask = segment_head(resized_img)
+    head_mask = cv2.resize(head_mask, (w, h), interpolation=cv2.INTER_NEAREST)
+    alpha = cv2.normalize(head_mask, None, 0, 255, cv2.NORM_MINMAX, dtype=cv2.CV_8U)
+    # Stack the alpha channel to create 4-channel RGBA image
+    img_with_alpha = np.dstack((img, alpha))
+    # return the image and mask
+    return img_with_alpha, head_mask
+
 def get_bbox_of_visible_region(img):
     """
     Given an image 
@@ -362,7 +374,7 @@ def get_head_alpha(human_alpha, head_mask):
 
 
     
-def identity_function(img, bg):
+def identity_function(img):
     """
     We need to do the following
     1. Get the largest face in the image
@@ -376,7 +388,7 @@ def identity_function(img, bg):
     9. Extract the viseme images
     """
     # get face bbox
-    face_info = get_face_bbox(img)
+    # face_info = get_face_bbox(img)
     # out_img = np.zeros((400,400,3), dtype=np.uint8)
     # if face_info["num_faces"] != 1:
     #     # print on image error
@@ -386,12 +398,13 @@ def identity_function(img, bg):
     #     color = (255, 0, 0)
     #     thickness = 2
     #     out_img = cv2.putText(out_img, 'No face detected' if face_info["num_faces"]==0 else "multiple faces detected", org, font, fontScale, color, thickness, cv2.LINE_AA)
-    #     return out_img
+    #     return out_img, out_img, out_img
     
     # get eyes
-    eye_info = get_eye_gaze(img)
-    # check if person is looking straight into the camera
-    isHorizontal = abs(face_info["eye_coords"][0][1] - face_info["eye_coords"][1][1]) < 10
+    # eye_info = get_eye_gaze(img)
+    # # check if person is looking straight into the camera
+    # print(face_info)
+    # isHorizontal = abs(face_info["eye_coords"][0][1] - face_info["eye_coords"][1][1]) < 10
 
     # if not eye_info["center_gaze"] or not isHorizontal:
     #     # print on image error
@@ -411,13 +424,11 @@ def identity_function(img, bg):
     human_alpha = human_img[:,:,3]
 
     # create another image by removing transparency and add pure white background
-    white_bg_img = cv2.cvtColor(human_img, cv2.COLOR_BGRA2BGR)
-
-
-    human_bbox = get_bbox_of_visible_region(human_img)
-
+    # white_bg_img = cv2.cvtColor(human_img, cv2.COLOR_BGRA2BGR)
+    #human_bbox = get_bbox_of_visible_region(human_img)
     # extract head
-    head_img, head_mask = extract_head(white_bg_img, human_bbox, face_info["face_coords"])
+    # head_img, head_mask = extract_head(white_bg_img, human_bbox, face_info["face_coords"])
+    head_img, head_mask =extract_head2(img)
     head_mask = (head_mask*255).astype('uint8')
 
     get_head_alpha(human_alpha, head_mask)
@@ -456,10 +467,10 @@ def identity_function(img, bg):
     img = human_img[y:y+h, x:x+w]
 
     # resize bg maintaining aspect ration to the human_img and use it as a background
-    bg = cv2.resize(bg, (w, h))
+    # bg = cv2.resize(bg, (w, h))
     # use bg as a background for human_img that has a transparency layer
-    result = overlay_transparent_image(bg, torso_img)
-    result = overlay_transparent_image(result, head_img)
+    # result = overlay_transparent_image(bg, torso_img)
+    # result = overlay_transparent_image(result, head_img)
 
     human_rgb = np.zeros((smoothed_head_mask.shape[0], smoothed_head_mask.shape[1], 3), dtype=np.uint8)
 
@@ -467,16 +478,43 @@ def identity_function(img, bg):
     for i in range(3):
         human_rgb[:,:,i] = human_alpha*(smoothed_head_mask>0)
     
-    print(np.min(human_rgb), np.max(human_rgb))
+    print(human_mask.shape, head_mask.shape, human_rgb.shape)
 
-    return head_img, torso_img, human_rgb
+    return head_mask, human_mask, human_alpha
 
+def process(path):
+    from tqdm import tqdm
+    #for each image in path/input folder
+    # get the nead and human mask from identity and save them in path/output folder
 
+    # get the list of images in the input folder
+    input_path = os.path.join(path, "input")
+    images = os.listdir(input_path)
+    # create output folder if it does not exist
+    output_folder = os.path.join(path, "output")
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+    # process each image
+    for image in tqdm(images):
+        # read image
+        impath = os.path.join(input_path, image)
+        print("now processing: ", impath)
+        img = cv2.imread(impath)
+        #print(img.shape)
+        #continue
+        # process image
+        head_mask, human_mask, human_alpha = identity_function(img)
+        # save head and human mask
+        cv2.imwrite(os.path.join(output_folder, "head_"+image), head_mask)
+        cv2.imwrite(os.path.join(output_folder, "human_"+image), human_mask)
+        cv2.imwrite(os.path.join(output_folder, "alpha_"+image), human_alpha)
 
-iface = gr.Interface(
-    fn=identity_function, 
-    inputs=["image", "image"], 
-    outputs=["image", "image", "image"],
-)
+process("data")
+# iface = gr.Interface(
+#     fn=identity_function, 
+#     inputs=["image"], 
+#     outputs=["image", "image", "image"],
+# )
 
-iface.launch()
+# iface.launch()
+
