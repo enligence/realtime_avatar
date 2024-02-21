@@ -59,6 +59,9 @@ def identity_function(img):
         # extract alpha channel
         #human_alpha = human_img[:,:,3]
 
+        # convert human_mask which is wxh array to an image
+        human_mask = cv2.cvtColor(human_mask, cv2.COLOR_GRAY2BGR)
+
         return human_mask, human_img
     except Exception as e:
         #do stack trace
@@ -102,5 +105,5 @@ iface = gr.Interface(
     outputs=["image", "image"],
 )
 
-iface.launch(share=True)
+iface.launch(share=False, server_name="0.0.0.0", server_port=7861)
 
