@@ -61,7 +61,11 @@ def identity_function(img):
 
         return human_mask, human_img
     except Exception as e:
-        print(e)
+        #do stack trace
+        import traceback
+        traceback.print_exc()
+        print("ERROR in exception: ", e)
+        
         return img, img
 
 
