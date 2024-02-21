@@ -93,5 +93,5 @@ iface = gr.Interface(
     outputs=["image", "image"],
 )
 
-iface.launch()
+iface.launch(share=True)
 
