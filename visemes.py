@@ -21,6 +21,7 @@ from SemanticGuidedHumanMatting.model.model import HumanMatting, HumanSegment
 model = HumanMatting(backbone='resnet50')
 model = torch.nn.DataParallel(model)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+print("Device: ", device)
 model.load_state_dict(torch.load("./SemanticGuidedHumanMatting/pretrained/SGHM-ResNet50.pth", map_location=torch.device(device)))
 #model = model.cpu().eval()
 model = model.to(device).eval()
@@ -50,14 +51,18 @@ def extract_human(img):
     return img_with_alpha, pred_mask
     
 def identity_function(img):
-    # extract human
-    human_img, human_mask = extract_human(img)
-    # human_alpha is 0-255 but human_mask is 0-1
-    human_mask = (human_mask*255).astype('uint8')
-    # extract alpha channel
-    #human_alpha = human_img[:,:,3]
+    try:
+        # extract human
+        human_img, human_mask = extract_human(img)
+        # human_alpha is 0-255 but human_mask is 0-1
+        human_mask = (human_mask*255).astype('uint8')
+        # extract alpha channel
+        #human_alpha = human_img[:,:,3]
 
-    return human_mask, human_img
+        return human_mask, human_img
+    except Exception as e:
+        print(e)
+        return img, img
 
 
 """
