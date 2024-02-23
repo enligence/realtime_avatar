@@ -125,4 +125,8 @@ you can use a
 
 import asyncio
 visemes, voice, audio_data = asyncio.run(azure_tts.generate_voice("Hello world"))
+
+For this to work you need to use .env file in project root and add the following
+AZURE_SPEECH_KEY=your_azure_speech_key
+AZURE_SPEECH_REGION=your_azure_speech_region
 """
