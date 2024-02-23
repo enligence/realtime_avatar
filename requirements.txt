@@ -1,6 +1,9 @@
+wheel
 opencv-python
 opencv-contrib-python
 gradio
 torch
 dlib
 torchvision
+azure-cognitiveservices-speech
+python-dotenv
