@@ -7,3 +7,6 @@ dlib
 torchvision
 azure-cognitiveservices-speech
 python-dotenv
+pillow
+moviepy
+numpy

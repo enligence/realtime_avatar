@@ -1,0 +1,402 @@
+[
+    {
+        "offset": 50.0,
+        "viseme": 0
+    },
+    {
+        "offset": 112.5,
+        "viseme": 17
+    },
+    {
+        "offset": 200.0,
+        "viseme": 1
+    },
+    {
+        "offset": 287.5,
+        "viseme": 19
+    },
+    {
+        "offset": 375.0,
+        "viseme": 20
+    },
+    {
+        "offset": 437.5,
+        "viseme": 7
+    },
+    {
+        "offset": 512.5,
+        "viseme": 6
+    },
+    {
+        "offset": 587.5,
+        "viseme": 20
+    },
+    {
+        "offset": 650.0,
+        "viseme": 21
+    },
+    {
+        "offset": 712.5,
+        "viseme": 4
+    },
+    {
+        "offset": 787.5,
+        "viseme": 6
+    },
+    {
+        "offset": 862.5,
+        "viseme": 16
+    },
+    {
+        "offset": 950.0,
+        "viseme": 18
+    },
+    {
+        "offset": 1050.0,
+        "viseme": 2
+    },
+    {
+        "offset": 1237.5,
+        "viseme": 20
+    },
+    {
+        "offset": 1300.0,
+        "viseme": 15
+    },
+    {
+        "offset": 1400.0,
+        "viseme": 19
+    },
+    {
+        "offset": 1456.25,
+        "viseme": 16
+    },
+    {
+        "offset": 1512.5,
+        "viseme": 1
+    },
+    {
+        "offset": 1587.5,
+        "viseme": 21
+    },
+    {
+        "offset": 1625.0,
+        "viseme": 21
+    },
+    {
+        "offset": 1650.0,
+        "viseme": 19
+    },
+    {
+        "offset": 1712.5,
+        "viseme": 6
+    },
+    {
+        "offset": 1750.0,
+        "viseme": 19
+    },
+    {
+        "offset": 1800.0,
+        "viseme": 17
+    },
+    {
+        "offset": 1850.0,
+        "viseme": 6
+    },
+    {
+        "offset": 1912.5,
+        "viseme": 4
+    },
+    {
+        "offset": 2125.0,
+        "viseme": 13
+    },
+    {
+        "offset": 2225.0,
+        "viseme": 8
+    },
+    {
+        "offset": 2256.25,
+        "viseme": 4
+    },
+    {
+        "offset": 2287.5,
+        "viseme": 18
+    },
+    {
+        "offset": 2337.5,
+        "viseme": 1
+    },
+    {
+        "offset": 2387.5,
+        "viseme": 13
+    },
+    {
+        "offset": 2462.5,
+        "viseme": 6
+    },
+    {
+        "offset": 2550.0,
+        "viseme": 19
+    },
+    {
+        "offset": 2593.75,
+        "viseme": 16
+    },
+    {
+        "offset": 2662.5,
+        "viseme": 19
+    },
+    {
+        "offset": 2750.0,
+        "viseme": 6
+    },
+    {
+        "offset": 2837.5,
+        "viseme": 19
+    },
+    {
+        "offset": 2937.5,
+        "viseme": 19
+    },
+    {
+        "offset": 3012.5,
+        "viseme": 3
+    },
+    {
+        "offset": 3225.0,
+        "viseme": 20
+    },
+    {
+        "offset": 3300.0,
+        "viseme": 1
+    },
+    {
+        "offset": 3337.5,
+        "viseme": 19
+    },
+    {
+        "offset": 3450.0,
+        "viseme": 13
+    },
+    {
+        "offset": 3512.5,
+        "viseme": 4
+    },
+    {
+        "offset": 3587.5,
+        "viseme": 19
+    },
+    {
+        "offset": 3662.5,
+        "viseme": 20
+    },
+    {
+        "offset": 3750.0,
+        "viseme": 8
+    },
+    {
+        "offset": 3837.5,
+        "viseme": 4
+    },
+    {
+        "offset": 3925.0,
+        "viseme": 19
+    },
+    {
+        "offset": 4100.0,
+        "viseme": 0
+    },
+    {
+        "offset": 4887.5,
+        "viseme": 0
+    },
+    {
+        "offset": 4962.5,
+        "viseme": 14
+    },
+    {
+        "offset": 5075.0,
+        "viseme": 4
+    },
+    {
+        "offset": 5150.0,
+        "viseme": 20
+    },
+    {
+        "offset": 5212.5,
+        "viseme": 9
+    },
+    {
+        "offset": 5412.5,
+        "viseme": 19
+    },
+    {
+        "offset": 5487.5,
+        "viseme": 0
+    },
+    {
+        "offset": 5737.5,
+        "viseme": 11
+    },
+    {
+        "offset": 5837.5,
+        "viseme": 16
+    },
+    {
+        "offset": 6000.0,
+        "viseme": 9
+    },
+    {
+        "offset": 6200.0,
+        "viseme": 19
+    },
+    {
+        "offset": 6262.5,
+        "viseme": 0
+    },
+    {
+        "offset": 6550.0,
+        "viseme": 18
+    },
+    {
+        "offset": 6612.5,
+        "viseme": 3
+    },
+    {
+        "offset": 6650.0,
+        "viseme": 13
+    },
+    {
+        "offset": 6700.0,
+        "viseme": 12
+    },
+    {
+        "offset": 6750.0,
+        "viseme": 6
+    },
+    {
+        "offset": 6800.0,
+        "viseme": 15
+    },
+    {
+        "offset": 6887.5,
+        "viseme": 18
+    },
+    {
+        "offset": 6987.5,
+        "viseme": 10
+    },
+    {
+        "offset": 7150.0,
+        "viseme": 14
+    },
+    {
+        "offset": 7225.0,
+        "viseme": 19
+    },
+    {
+        "offset": 7275.0,
+        "viseme": 6
+    },
+    {
+        "offset": 7325.0,
+        "viseme": 7
+    },
+    {
+        "offset": 7425.0,
+        "viseme": 1
+    },
+    {
+        "offset": 7512.5,
+        "viseme": 20
+    },
+    {
+        "offset": 7600.0,
+        "viseme": 4
+    },
+    {
+        "offset": 7687.5,
+        "viseme": 19
+    },
+    {
+        "offset": 7787.5,
+        "viseme": 20
+    },
+    {
+        "offset": 7875.0,
+        "viseme": 13
+    },
+    {
+        "offset": 7962.5,
+        "viseme": 6
+    },
+    {
+        "offset": 8050.0,
+        "viseme": 4
+    },
+    {
+        "offset": 8081.25,
+        "viseme": 6
+    },
+    {
+        "offset": 8112.5,
+        "viseme": 19
+    },
+    {
+        "offset": 8175.0,
+        "viseme": 6
+    },
+    {
+        "offset": 8237.5,
+        "viseme": 20
+    },
+    {
+        "offset": 8312.5,
+        "viseme": 20
+    },
+    {
+        "offset": 8450.0,
+        "viseme": 4
+    },
+    {
+        "offset": 8531.25,
+        "viseme": 6
+    },
+    {
+        "offset": 8625.0,
+        "viseme": 2
+    },
+    {
+        "offset": 8725.0,
+        "viseme": 15
+    },
+    {
+        "offset": 8825.0,
+        "viseme": 6
+    },
+    {
+        "offset": 8875.0,
+        "viseme": 19
+    },
+    {
+        "offset": 8950.0,
+        "viseme": 19
+    },
+    {
+        "offset": 9037.5,
+        "viseme": 5
+    },
+    {
+        "offset": 9125.0,
+        "viseme": 13
+    },
+    {
+        "offset": 9300.0,
+        "viseme": 19
+    },
+    {
+        "offset": 9387.5,
+        "viseme": 0
+    }
+]
